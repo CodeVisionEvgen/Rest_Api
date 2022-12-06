@@ -4,9 +4,10 @@ const HybridExpress = require('./api/hybrid.js');
 const api = require('./api/router');
 async function initApp() {
     return await new Promise((resolve,reject)=>{
-        const {server} = HybridExpress;
+        const app = HybridExpress;
+        const {server} = app;
         server.use(express.static('public'))
-        api(server)
+        api(app)
         server.listen(process.env.port,()=>{
             resolve();
         });

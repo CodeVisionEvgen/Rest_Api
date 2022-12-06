@@ -1,15 +1,15 @@
 module.exports = (app) => {
+    const {server} = app; 
     const routes = [
         {
             method: 'get',
             path: '/',
-            work: (req,res) => {
-                
-            }
+            work: app.sendFile('html/main.html')
         }
     ];
     routes.forEach(route=>{
+        console.log(route)
         if(!route.middleware) route.middleware = [];
-        app[route.method](route.path,route.middleware,route.work);
+        server[route.method](route.path,route.middleware,route.work);
     })
 }

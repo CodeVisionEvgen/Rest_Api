@@ -5,8 +5,10 @@ class Web {
     constructor(server) {
         this.server = server;
     }
-    sendFile() {
-        this.server().get((req,res)=>CustomModules["SendFile"](req,res,path))
+    // Ось тут нормально реалізовано кастомна функція?
+    
+    sendFile(path) {
+        return ((req,res)=>CustomModules["SendFile"](res,path))
     }
 }
 module.exports = new Web(express());
